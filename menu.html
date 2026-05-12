@@ -3,215 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>The Menu | Coffee Beans</title>
+    <title>Coffee Beans | Luxury Roastery</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@200;400;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,900&family=Montserrat:wght@100;300;600;900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --espresso: #050505;
+            --espresso: #0a0908;
             --gold: #d4af37;
             --emerald: #064e3b;
-            --cream: #fdfaf5;
+            --cream: #f8f1e7;
+            --glow: rgba(212, 175, 55, 0.15);
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body { 
             background-color: var(--espresso); 
             color: var(--cream); 
             font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .font-serif { font-family: 'Playfair Display', serif; }
         .font-vanguard { font-family: 'Syncopate', sans-serif; }
 
-        /* CLEAN INTERFACE CONTROLS */
-        .section-divider {
-            width: 60px;
-            height: 1px;
+        /* ATMOSPHERIC DEPTH */
+        .spotlight {
+            position: fixed; width: 60vw; height: 60vw;
+            background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
+            top: -10vw; right: -10vw; z-index: 0; pointer-events: none;
+        }
+
+        /* PREMIUM GLASS CARD */
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-title { font-size: clamp(3rem, 15vw, 8.5rem); color: #fff; text-shadow: 0 0 40px rgba(0,0,0,0.5); }
+
+        .btn-gold {
             background: var(--gold);
-            margin: 2rem auto;
-            opacity: 0.5;
-        }
-
-        .menu-item {
-            padding: 1.5rem 0;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .menu-item:hover {
-            background: linear-gradient(90deg, transparent, rgba(6, 78, 59, 0.15), transparent);
-        }
-
-        /* MOBILE OPTIMIZATION: Nothing cut off */
-        .container-tight {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        .halaal-tag {
-            font-size: 8px;
-            letter-spacing: 2px;
-            color: var(--emerald);
-            border: 1px solid var(--emerald);
-            padding: 2px 8px;
+            color: #000;
+            padding: 16px 40px;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            font-weight: 700;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            background: #fff;
         }
 
-        .reveal { opacity: 0; transform: translateY(15px); transition: 0.8s ease-out; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1.2s cubic-bezier(0.2, 1, 0.3, 1); }
         .reveal-visible { opacity: 1; transform: translateY(0); }
 
-        /* CLICK-THROUGH VIGNETTE */
-        .vignette {
-            position: fixed; inset: 0;
-            background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.7) 100%);
-            pointer-events: none;
-            z-index: 5;
+        @media (max-width: 768px) {
+            .hero-title { font-size: 4rem; line-height: 1.1; }
         }
     </style>
 </head>
 <body>
-    <div class="vignette"></div>
+    <div class="spotlight"></div>
+    <div class="spotlight" style="bottom: -10vw; left: -10vw; top: auto; right: auto;"></div>
 
-    <nav class="sticky top-0 z-[100] bg-[var(--espresso)]/80 backdrop-blur-md border-b border-white/5 py-6">
-        <div class="container-tight flex justify-between items-center">
-            <a href="index.html" class="font-vanguard text-[9px] tracking-widest uppercase hover:text-[var(--gold)]">← Back</a>
-            <h2 class="font-serif italic text-xl">The <span class="text-[var(--gold)]">Collection</span></h2>
-            <div class="halaal-tag">Halaal</div>
+    <!-- NAVIGATION -->
+    <nav class="fixed top-8 left-1/2 -translate-x-1/2 z-[100] w-[92%] max-w-5xl glass-card rounded-2xl px-6 md:px-10 py-5 flex justify-between items-center">
+        <div class="font-vanguard text-xs md:text-sm tracking-tighter uppercase">Coffee <span class="text-[var(--gold)]">Beans</span></div>
+        <div class="hidden md:flex gap-10 text-[9px] uppercase tracking-[0.4em] font-black">
+            <a href="menu.html" class="hover:text-[var(--gold)] transition">The Menu</a>
+            <a href="roastery.html" class="hover:text-[var(--gold)] transition">Roastery</a>
+            <a href="visit.html" class="hover:text-[var(--gold)] transition">Visit</a>
+            <a href="reviews.html" class="hover:text-[var(--gold)] transition">Reviews</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="text-[8px] font-black text-[var(--gold)] animate-pulse hidden sm:block uppercase">Live: Roasting Now</span>
+            <i data-lucide="shopping-cart" class="w-4 h-4 opacity-70"></i>
         </div>
     </nav>
 
-    <header class="py-20 text-center container-tight">
-        <p class="font-vanguard text-[8px] tracking-[1em] text-[var(--emerald)] uppercase mb-4 reveal">Premium Coffee & Cuisine</p>
-        <h1 class="font-serif italic text-5xl md:text-7xl reveal" style="transition-delay: 0.1s;">Menu.</h1>
-        <div class="section-divider reveal" style="transition-delay: 0.2s;"></div>
-    </header>
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 px-6 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-[var(--espresso)] via-transparent to-[var(--espresso)] z-10"></div>
+            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=2078&auto=format&fit=crop" 
+                 class="w-full h-full object-cover opacity-30 grayscale-[0.5]" alt="Espresso Bar">
+        </div>
 
-    <main class="container-tight space-y-24 pb-32">
-
-        <section class="reveal">
-            <h2 class="font-vanguard text-[10px] tracking-[0.8em] text-[var(--gold)] uppercase text-center mb-10">01. Hot & Crafted</h2>
-            <div class="space-y-2">
-                <div class="menu-item flex justify-between items-center">
-                    <div>
-                        <h3 class="text-lg font-serif italic">Saffron Silk Latte</h3>
-                        <p class="text-[9px] uppercase tracking-widest text-white/40">Organic Honey • Saffron Filaments • Creamy Silk</p>
-                    </div>
-                    <span class="font-vanguard text-[10px] text-[var(--gold)]">R 55</span>
-                </div>
-                <div class="menu-item flex justify-between items-center">
-                    <div>
-                        <h3 class="text-lg font-serif italic">The Obsidian Cortado</h3>
-                        <p class="text-[9px] uppercase tracking-widest text-white/40">Double Ristretto • Charcoal Infusion • 1:1 Ratio</p>
-                    </div>
-                    <span class="font-vanguard text-[10px] text-[var(--gold)]">R 42</span>
+        <div class="z-20 text-center max-w-6xl">
+            <h2 class="font-vanguard text-[var(--gold)] text-[8px] md:text-[10px] tracking-[1em] uppercase mb-6 reveal">Midlands Boutique Roastery</h2>
+            <h1 class="hero-title font-serif italic reveal" style="transition-delay: 0.2s;">
+                Bold <span class="text-[var(--gold)]">&</span> <br> 
+                <span class="not-italic font-black tracking-tighter uppercase">Refined.</span>
+            </h1>
+            
+            <div class="glass-card p-8 md:p-16 mt-12 rounded-3xl max-w-3xl mx-auto border-t-2 border-[var(--gold)]/30 reveal" style="transition-delay: 0.4s;">
+                <p class="font-light text-base md:text-xl leading-relaxed text-white/80 mb-10">
+                    Experience the <span class="text-[var(--gold)] font-bold">Science of Taste</span>. We source exclusive micro-lots to bring the world's finest profiles to your cup.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-6">
+                    <a href="menu.html" class="btn-gold rounded-full">Explore Menu</a>
+                    <a href="origins.html" class="px-10 py-4 border border-white/10 text-white text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-white/5 transition">Our Origins</a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="reveal">
-            <h2 class="font-vanguard text-[10px] tracking-[0.8em] text-[var(--emerald)] uppercase text-center mb-10">02. Stone Fired</h2>
-            <div class="space-y-2">
-                <div class="menu-item flex justify-between items-center">
-                    <div>
-                        <h3 class="text-lg font-serif italic">Wagyu & Truffle</h3>
-                        <p class="text-[9px] uppercase tracking-widest text-white/40">Halaal Wagyu Strips • White Truffle Oil • Fior di Latte</p>
+    <!-- FEATURE SECTION -->
+    <section id="menu" class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col lg:flex-row gap-20 items-center">
+            
+            <div class="w-full lg:w-1/2 reveal">
+                <div class="inline-block bg-[var(--emerald)] text-[var(--gold)] px-4 py-1 rounded-full text-[8px] font-black tracking-widest mb-6 uppercase">Featured This Week</div>
+                <h3 class="font-serif italic text-5xl md:text-7xl mb-10 leading-tight">The <span class="text-[var(--gold)]">Gold</span> <br>Standard.</h3>
+                
+                <div class="space-y-8">
+                    <div class="group cursor-pointer">
+                        <div class="flex justify-between items-end mb-2">
+                            <h4 class="text-xl md:text-2xl font-serif italic text-white group-hover:text-[var(--gold)] transition">Honey Lavender Cortado</h4>
+                            <span class="text-[var(--gold)] font-vanguard text-[10px]">R 42</span>
+                        </div>
+                        <p class="text-[8px] md:text-[9px] uppercase tracking-[0.3em] text-white/30">Wildflower Honey • Dried Lavender • Double Shot</p>
                     </div>
-                    <span class="font-vanguard text-[10px] text-[var(--gold)]">R 210</span>
+                    <div class="group cursor-pointer">
+                        <div class="flex justify-between items-end mb-2">
+                            <h4 class="text-xl md:text-2xl font-serif italic text-white group-hover:text-[var(--gold)] transition">The Obsidian Brew</h4>
+                            <p class="text-[var(--gold)] font-vanguard text-[10px]">R 50</p>
+                        </div>
+                        <p class="text-[8px] md:text-[9px] uppercase tracking-[0.3em] text-white/30">24hr Cold Extraction • Dark Cocoa Finish</p>
+                    </div>
                 </div>
-                <div class="menu-item flex justify-between items-center">
-                    <div>
-                        <h3 class="text-lg font-serif italic">Spicy gLamb</h3>
-                        <p class="text-[9px] uppercase tracking-widest text-white/40">Harissa Lamb • Pomegranate • Minted Yogurt</p>
-                    </div>
-                    <span class="font-vanguard text-[10px] text-[var(--gold)]">R 185</span>
-                </div>
-                <div class="menu-item flex justify-between items-center">
-                    <div>
-                        <h3 class="text-lg font-serif italic">Bianco Green</h3>
-                        <p class="text-[9px] uppercase tracking-widest text-white/40">Pistachio Pesto • Stracciatella • Basil Dust</p>
-                    </div>
-                    <span class="font-vanguard text-[10px] text-[var(--gold)]">R 155</span>
+
+                <div class="mt-16 p-8 bg-[var(--emerald)]/20 border border-[var(--emerald)]/40 rounded-2xl">
+                    <p class="text-xs italic text-[var(--cream)]/80 leading-relaxed">
+                        "The best coffee I've had in the Midlands. The atmosphere feels like a hidden sanctuary."
+                    </p>
+                    <p class="text-[9px] font-black text-[var(--gold)] mt-4 uppercase tracking-widest">— Local Guide</p>
                 </div>
             </div>
-        </section>
 
-        <section class="reveal">
-            <h2 class="font-vanguard text-[10px] tracking-[0.8em] text-[var(--gold)] uppercase text-center mb-10">03. Cold & Fluid</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
-                <div class="menu-item flex justify-between items-center">
-                    <div>
-                        <h3 class="text-lg font-serif italic">Biscoff Dream Shake</h3>
-                        <p class="text-[9px] uppercase tracking-widest text-white/40">Lotus Crumble • Clotted Cream</p>
-                    </div>
-                    <span class="font-vanguard text-[10px] text-[var(--gold)]">R 68</span>
+            <div class="w-full lg:w-1/2 relative reveal" style="transition-delay: 0.3s;">
+                <div class="absolute -top-10 -right-10 w-24 md:w-40 h-24 md:h-40 border-r-2 border-t-2 border-[var(--gold)]/20 rounded-tr-[80px] hidden md:block"></div>
+                <div class="rounded-[40px] overflow-hidden shadow-2xl border border-white/5 aspect-video md:aspect-auto">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover">
                 </div>
-                <div class="menu-item flex justify-between items-center">
-                    <div>
-                        <h3 class="text-lg font-serif italic">Matcha</h3>
-                        <p class="text-[9px] uppercase tracking-widest text-white/40">Iced • Coconut Milk • Grade A</p>
-                    </div>
-                    <span class="font-vanguard text-[10px] text-[var(--gold)]">R 72</span>
-                </div>
-                <div class="menu-item flex justify-between items-center">
-                    <div>
-                        <h3 class="text-lg font-serif italic"> Water</h3>
-                        <p class="text-[9px] uppercase tracking-widest text-white/40">Infused Still Mineral • </p>
-                    </div>
-                    <span class="font-vanguard text-[10px] text-[var(--gold)]">R 45</span>
-                </div>
-                <div class="menu-item flex justify-between items-center">
-                    <div>
-                        <h3 class="text-lg font-serif italic">Ruby Mojito</h3>
-                        <p class="text-[9px] uppercase tracking-widest text-white/40">Fresh Pomegranate • Mint (Non-Alc)</p>
-                    </div>
-                    <span class="font-vanguard text-[10px] text-[var(--gold)]">R 65</span>
+                <div class="absolute -bottom-8 -left-4 md:-left-8 glass-card p-4 md:p-6 rounded-2xl border-l-4 border-l-[var(--gold)]">
+                    <p class="text-[8px] font-black opacity-40 uppercase mb-1">Temperature</p>
+                    <p class="text-lg md:text-xl font-vanguard">94°C <span class="text-[var(--gold)] text-[10px]">PRECISION</span></p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="reveal bg-[var(--emerald)]/10 p-10 rounded-2xl border border-[var(--emerald)]/20">
-            <h2 class="font-vanguard text-[10px] tracking-[0.8em] text-[var(--gold)] uppercase text-center mb-10">04. Desserts</h2>
-            <div class="space-y-6">
-                <div class="flex justify-between items-center">
-                    <div>
-                        <h3 class="text-2xl font-serif italic">Biscoff Tiramisu</h3>
-                        <p class="text-[9px] uppercase tracking-widest text-white/50">Deconstructed • Gold Leaf Shavings • Espresso Soil</p>
-                    </div>
-                    <span class="font-vanguard text-xs text-[var(--gold)]">R 95</span>
-                </div>
-                <div class="flex justify-between items-center border-t border-white/5 pt-6">
-                    <div>
-                        <h3 class="text-2xl font-serif italic">Turkish Delight Cake</h3>
-                        <p class="text-[9px] uppercase tracking-widest text-white/50">Rose Syrup • Pistachio Crust • Honey Glaze</p>
-                    </div>
-                    <span class="font-vanguard text-xs text-[var(--gold)]">R 85</span>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="py-20 text-center border-t border-white/5">
-        <div class="font-vanguard text-xl tracking-[0.5em] text-[var(--gold)] mb-4 italic">COFFEE BEANS.</div>
-        <p class="text-[7px] tracking-[0.8em] opacity-30 uppercase">Midlands • South Africa • 2026</p>
+    <!-- RESPONSIVE FOOTER -->
+    <footer id="visit" class="py-24 border-t border-white/5 text-center relative overflow-hidden">
+        <div class="font-vanguard text-3xl md:text-4xl tracking-tighter mb-4 italic opacity-80 uppercase">Coffee <span class="text-[var(--gold)]">Beans</span>.</div>
+        <p class="text-[9px] md:text-[10px] tracking-[0.6em] text-[var(--gold)] uppercase mb-12 px-6">Artistry in Every Extraction</p>
+        
+        <div class="grid grid-cols-1 sm:flex sm:justify-center gap-8 md:gap-12 text-white/40 mb-12 px-6">
+            <a href="https://www.instagram.com/digiatallegacies?igsh=MXNwNWE0NjBwNW1kZQ==" class="hover:text-[var(--gold)] transition uppercase text-[9px] font-black tracking-widest border-b border-white/5 pb-4 sm:border-0 sm:pb-0">Instagram</a>
+            <a href="visit.html" class="hover:text-[var(--gold)] transition uppercase text-[9px] font-black tracking-widest border-b border-white/5 pb-4 sm:border-0 sm:pb-0">Find Us</a>
+            <a href="menu.html" class="hover:text-[var(--gold)] transition uppercase text-[9px] font-black tracking-widest pb-4 sm:pb-0">Menu</a>
+        </div>
+        
+        <div class="space-y-2 opacity-20 px-6">
+            <p class="text-[9px] tracking-widest uppercase">© 2026 Developed by Saffiyya Saib</p>
+            <p class="text-[8px] tracking-[0.4em] uppercase">Pietermaritzburg • South Africa</p>
+        </div>
     </footer>
 
     <script>
         lucide.createIcons();
 
+        // Reveal Logic
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('reveal-visible');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-visible');
+                }
             });
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
     </script>
 </body>
 </html>

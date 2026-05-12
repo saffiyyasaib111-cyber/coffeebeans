@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Feedback | Coffee Beans</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@200;400;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --espresso: #050505;
+            --gold: #d4af37;
+            --emerald: #064e3b;
+            --cream: #fdfaf5;
+        }
+
+        body { 
+            background-color: var(--espresso); 
+            color: var(--cream); 
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-vanguard { font-family: 'Syncopate', sans-serif; }
+
+        /* FORM STYLING */
+        .input-field {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 15px 0;
+            width: 100%;
+            color: var(--cream);
+            transition: border-color 0.4s ease;
+            font-size: 14px;
+        }
+        .input-field:focus {
+            outline: none;
+            border-bottom-color: var(--gold);
+        }
+
+        .review-card {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 30px;
+            border-left: 2px solid var(--emerald);
+            transition: 0.4s ease;
+        }
+        .review-card:hover { background: rgba(6, 78, 59, 0.1); }
+
+        .btn-submit {
+            margin-top: 30px;
+            border: 1px solid var(--gold);
+            padding: 15px 40px;
+            font-family: 'Syncopate';
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: var(--gold);
+            transition: all 0.4s;
+        }
+        .btn-submit:hover {
+            background: var(--gold);
+            color: black;
+        }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
+        .reveal-visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="pb-20">
+
+    <nav class="fixed top-0 w-full z-[100] px-8 py-10 flex justify-between items-center mix-blend-difference">
+        <a href="index.html" class="font-vanguard text-[9px] tracking-widest uppercase text-[var(--gold)]">← Return</a>
+        <div class="font-vanguard text-[10px] tracking-[0.4em]">GUEST RELATIONS</div>
+    </nav>
+
+    <header class="pt-40 pb-20 text-center px-6">
+        <h1 class="font-serif italic text-6xl md:text-8xl mb-4 reveal">The Ledger.</h1>
+        <p class="font-vanguard text-[9px] tracking-[1em] text-[var(--emerald)] uppercase reveal" style="transition-delay: 0.2s;">Every voice matters</p>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20">
+        
+        <section class="space-y-10">
+            <h2 class="font-serif italic text-3xl border-b border-[var(--gold)]/20 pb-4 reveal">Client Stories</h2>
+            
+            <div class="space-y-6">
+                <div class="review-card reveal" style="transition-delay: 0.1s;">
+                    <div class="flex gap-1 mb-4">
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-[var(--gold)] text-[var(--gold)]"></i>
+                    </div>
+                    <p class="font-serif italic text-lg mb-4">"The Latte is an absolute game-changer. The atmosphere at Midlands Mall is unmatched."</p>
+                    <p class="text-[9px] font-vanguard tracking-widest text-[var(--gold)]">— Anonymous</p>
+                </div>
+
+                <div class="review-card reveal" style="transition-delay: 0.2s;">
+                    <div class="flex gap-1 mb-4 text-[var(--gold)]">
+                        <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                        <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                    </div>
+                    <p class="font-serif italic text-lg mb-4">"Hands down the best Halaal pizza in the city. Perfectly crisp dough."</p>
+                    <p class="text-[9px] font-vanguard tracking-widest text-[var(--gold)]">— Nurhan T</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal" style="transition-delay: 0.3s;">
+            <h2 class="font-serif italic text-3xl border-b border-[var(--gold)]/20 pb-4 mb-10">Feedback & Concerns</h2>
+            <p class="text-[10px] uppercase tracking-widest opacity-50 mb-10 leading-loose">
+                If your experience was anything less than exceptional, please let us know. Our management team reviews every submission within 24 hours.
+            </p>
+
+            <form class="space-y-8">
+                <div>
+                    <label class="text-[8px] font-vanguard uppercase tracking-widest opacity-40">Full Name</label>
+                    <input type="text" class="input-field" placeholder="Sophia Brown">
+                </div>
+                <div>
+                    <label class="text-[8px] font-vanguard uppercase tracking-widest opacity-40">Email Address</label>
+                    <input type="email" class="input-field" placeholder="sophia@example.com">
+                </div>
+                <div>
+                    <label class="text-[8px] font-vanguard uppercase tracking-widest opacity-40">Reason for Contact</label>
+                    <select class="input-field bg-[var(--espresso)]">
+                        <option>General Feedback</option>
+                        <option>Excellent Service</option>
+                        <option>Quality Concern</option>
+                        <option>Management Complaint</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-[8px] font-vanguard uppercase tracking-widest opacity-40">Your Message</label>
+                    <textarea class="input-field h-32 resize-none" placeholder="How can we improve?"></textarea>
+                </div>
+                
+                <button type="submit" class="btn-submit w-full md:w-auto">Submit Report</button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer class="mt-40 py-20 text-center border-t border-white/5 mx-10">
+        <div class="font-vanguard text-xl tracking-[0.5em] text-[var(--gold)] mb-4 italic">COFFEE BEANS.</div>
+        <p class="text-[8px] tracking-[0.8em] opacity-30 uppercase">Liberty Midlands Mall • 2026</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('reveal-visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

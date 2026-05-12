@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Origins | Coffee Beans</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@200;400;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --espresso: #050505;
+            --gold: #d4af37;
+            --emerald: #064e3b;
+            --cream: #fdfaf5;
+        }
+
+        body { 
+            background-color: var(--espresso); 
+            color: var(--cream); 
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-vanguard { font-family: 'Syncopate', sans-serif; }
+
+        /* HEADER IMAGE FIX */
+        .origins-hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(0.4) contrast(1.1) brightness(0.8);
+            border-radius: 12px;
+        }
+
+        /* MOBILE RESPONSIVE NAV */
+        nav { backdrop-filter: blur(15px); }
+        .nav-link {
+            font-family: 'Syncopate';
+            font-size: clamp(7px, 2vw, 9px);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* REGION CARDS - ADJUSTED FOR MOBILE */
+        .region-card {
+            border-left: 1px solid var(--gold);
+            padding: 25px;
+            background: linear-gradient(90deg, rgba(6, 78, 59, 0.08) 0%, transparent 100%);
+            transition: 0.5s ease;
+        }
+        @media (min-width: 768px) {
+            .region-card { padding: 40px; }
+            .region-card:hover { transform: translateX(15px); }
+        }
+
+        .map-dot {
+            width: 8px; height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 15px var(--gold);
+            margin-right: 15px;
+        }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: 1s ease-out; }
+        .reveal-visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body class="pb-20">
+
+    <nav class="fixed top-0 w-full z-[100] px-6 md:px-12 py-6 md:py-8 flex justify-between items-center border-b border-white/5">
+        <a href="index.html" class="nav-link text-[var(--gold)]">Index</a>
+        <div class="font-vanguard text-[8px] md:text-xs tracking-[0.4em] text-center px-4">THE ORIGINS</div>
+        <a href="visit.html" class="nav-link">Visit</a>
+    </nav>
+
+    <header class="min-h-[60vh] md:h-[80vh] flex flex-col justify-center items-center text-center px-6 pt-32 pb-12">
+        <p class="font-vanguard text-[7px] md:text-[9px] tracking-[1em] text-[var(--emerald)] uppercase mb-6 reveal">Sourced with Integrity</p>
+        <h1 class="font-serif italic text-5xl md:text-8xl lg:text-9xl mb-8 reveal" style="transition-delay: 0.2s;">Beyond <br> the <span class="text-[var(--gold)]">Bean.</span></h1>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 space-y-24 md:space-y-40">
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center reveal">
+            <div class="space-y-6 order-2 md:order-1">
+                <h2 class="font-vanguard text-[9px] tracking-[0.8em] text-[var(--gold)] uppercase">Our Philosophy</h2>
+                <p class="font-serif italic text-2xl md:text-4xl leading-snug">
+                    We don't just buy coffee; we invest in <span class="text-[var(--emerald)]">lineage</span>.
+                </p>
+                <p class="text-[10px] md:text-xs uppercase tracking-widest opacity-50 leading-loose">
+                    Every farm we partner with follows strictly ethical practices. We ensure the soil is respected and every hand involved in the harvest is treated with boutique dignity.
+                </p>
+            </div>
+            
+            <div class="order-1 md:order-2 aspect-[4/5] md:aspect-square overflow-hidden rounded-xl border border-[var(--gold)]/20 shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop" 
+                     alt="Boutique Coffee Sourcing" 
+                     class="origins-hero-img">
+            </div>
+        </section>
+
+        <section class="space-y-12">
+            <h2 class="font-vanguard text-[9px] tracking-[1.2em] text-center opacity-30 uppercase mb-16">The Regional Map</h2>
+
+            <div class="region-card reveal">
+                <div class="flex items-center mb-6">
+                    <span class="map-dot"></span>
+                    <h3 class="font-serif italic text-3xl md:text-4xl">Yirgacheffe, Ethiopia</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="md:col-span-2">
+                        <p class="text-[10px] md:text-[11px] uppercase tracking-[0.1em] opacity-60">
+                            The birthplace of coffee. Notes of jasmine and lemongrass define our Saffron Silk Latte base.
+                        </p>
+                    </div>
+                    <div class="md:text-right border-l md:border-l border-white/10 pl-6">
+                        <p class="font-vanguard text-[8px] text-[var(--gold)] mb-1">ALTITUDE</p>
+                        <p class="font-serif italic text-lg">1,900m</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="region-card reveal">
+                <div class="flex items-center mb-6">
+                    <span class="map-dot"></span>
+                    <h3 class="font-serif italic text-3xl md:text-4xl">Antioquia, Colombia</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="md:col-span-2">
+                        <p class="text-[10px] md:text-[11px] uppercase tracking-[0.1em] opacity-60">
+                            Small family-owned estate. Heavy chocolate profile with a nutty finish.
+                        </p>
+                    </div>
+                    <div class="md:text-right border-l border-white/10 pl-6">
+                        <p class="font-vanguard text-[8px] text-[var(--gold)] mb-1">PROCESS</p>
+                        <p class="font-serif italic text-lg">Washed</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="mt-40 py-20 border-t border-white/5 text-center">
+        <div class="font-vanguard text-xl md:text-2xl tracking-tighter italic text-[var(--gold)] mb-4">COFFEE BEANS.</div>
+        <p class="text-[7px] md:text-[8px] tracking-[0.6em] opacity-40 uppercase">Midlands • South Africa</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('reveal-visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

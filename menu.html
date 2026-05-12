@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Menu | Coffee Beans</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Montserrat:wght@200;400;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --espresso: #050505;
+            --gold: #d4af37;
+            --emerald: #064e3b;
+            --cream: #fdfaf5;
+        }
+
+        body { 
+            background-color: var(--espresso); 
+            color: var(--cream); 
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+        }
+
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-vanguard { font-family: 'Syncopate', sans-serif; }
+
+        /* CLEAN INTERFACE CONTROLS */
+        .section-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin: 2rem auto;
+            opacity: 0.5;
+        }
+
+        .menu-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .menu-item:hover {
+            background: linear-gradient(90deg, transparent, rgba(6, 78, 59, 0.15), transparent);
+        }
+
+        /* MOBILE OPTIMIZATION: Nothing cut off */
+        .container-tight {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .halaal-tag {
+            font-size: 8px;
+            letter-spacing: 2px;
+            color: var(--emerald);
+            border: 1px solid var(--emerald);
+            padding: 2px 8px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .reveal { opacity: 0; transform: translateY(15px); transition: 0.8s ease-out; }
+        .reveal-visible { opacity: 1; transform: translateY(0); }
+
+        /* CLICK-THROUGH VIGNETTE */
+        .vignette {
+            position: fixed; inset: 0;
+            background: radial-gradient(circle, transparent 50%, rgba(0,0,0,0.7) 100%);
+            pointer-events: none;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+    <div class="vignette"></div>
+
+    <nav class="sticky top-0 z-[100] bg-[var(--espresso)]/80 backdrop-blur-md border-b border-white/5 py-6">
+        <div class="container-tight flex justify-between items-center">
+            <a href="index.html" class="font-vanguard text-[9px] tracking-widest uppercase hover:text-[var(--gold)]">← Back</a>
+            <h2 class="font-serif italic text-xl">The <span class="text-[var(--gold)]">Collection</span></h2>
+            <div class="halaal-tag">Halaal</div>
+        </div>
+    </nav>
+
+    <header class="py-20 text-center container-tight">
+        <p class="font-vanguard text-[8px] tracking-[1em] text-[var(--emerald)] uppercase mb-4 reveal">Premium Coffee & Cuisine</p>
+        <h1 class="font-serif italic text-5xl md:text-7xl reveal" style="transition-delay: 0.1s;">Menu.</h1>
+        <div class="section-divider reveal" style="transition-delay: 0.2s;"></div>
+    </header>
+
+    <main class="container-tight space-y-24 pb-32">
+
+        <section class="reveal">
+            <h2 class="font-vanguard text-[10px] tracking-[0.8em] text-[var(--gold)] uppercase text-center mb-10">01. Hot & Crafted</h2>
+            <div class="space-y-2">
+                <div class="menu-item flex justify-between items-center">
+                    <div>
+                        <h3 class="text-lg font-serif italic">Saffron Silk Latte</h3>
+                        <p class="text-[9px] uppercase tracking-widest text-white/40">Organic Honey • Saffron Filaments • Creamy Silk</p>
+                    </div>
+                    <span class="font-vanguard text-[10px] text-[var(--gold)]">R 55</span>
+                </div>
+                <div class="menu-item flex justify-between items-center">
+                    <div>
+                        <h3 class="text-lg font-serif italic">The Obsidian Cortado</h3>
+                        <p class="text-[9px] uppercase tracking-widest text-white/40">Double Ristretto • Charcoal Infusion • 1:1 Ratio</p>
+                    </div>
+                    <span class="font-vanguard text-[10px] text-[var(--gold)]">R 42</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal">
+            <h2 class="font-vanguard text-[10px] tracking-[0.8em] text-[var(--emerald)] uppercase text-center mb-10">02. Stone Fired</h2>
+            <div class="space-y-2">
+                <div class="menu-item flex justify-between items-center">
+                    <div>
+                        <h3 class="text-lg font-serif italic">Wagyu & Truffle</h3>
+                        <p class="text-[9px] uppercase tracking-widest text-white/40">Halaal Wagyu Strips • White Truffle Oil • Fior di Latte</p>
+                    </div>
+                    <span class="font-vanguard text-[10px] text-[var(--gold)]">R 210</span>
+                </div>
+                <div class="menu-item flex justify-between items-center">
+                    <div>
+                        <h3 class="text-lg font-serif italic">Spicy gLamb</h3>
+                        <p class="text-[9px] uppercase tracking-widest text-white/40">Harissa Lamb • Pomegranate • Minted Yogurt</p>
+                    </div>
+                    <span class="font-vanguard text-[10px] text-[var(--gold)]">R 185</span>
+                </div>
+                <div class="menu-item flex justify-between items-center">
+                    <div>
+                        <h3 class="text-lg font-serif italic">Bianco Green</h3>
+                        <p class="text-[9px] uppercase tracking-widest text-white/40">Pistachio Pesto • Stracciatella • Basil Dust</p>
+                    </div>
+                    <span class="font-vanguard text-[10px] text-[var(--gold)]">R 155</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal">
+            <h2 class="font-vanguard text-[10px] tracking-[0.8em] text-[var(--gold)] uppercase text-center mb-10">03. Cold & Fluid</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+                <div class="menu-item flex justify-between items-center">
+                    <div>
+                        <h3 class="text-lg font-serif italic">Biscoff Dream Shake</h3>
+                        <p class="text-[9px] uppercase tracking-widest text-white/40">Lotus Crumble • Clotted Cream</p>
+                    </div>
+                    <span class="font-vanguard text-[10px] text-[var(--gold)]">R 68</span>
+                </div>
+                <div class="menu-item flex justify-between items-center">
+                    <div>
+                        <h3 class="text-lg font-serif italic">Matcha</h3>
+                        <p class="text-[9px] uppercase tracking-widest text-white/40">Iced • Coconut Milk • Grade A</p>
+                    </div>
+                    <span class="font-vanguard text-[10px] text-[var(--gold)]">R 72</span>
+                </div>
+                <div class="menu-item flex justify-between items-center">
+                    <div>
+                        <h3 class="text-lg font-serif italic"> Water</h3>
+                        <p class="text-[9px] uppercase tracking-widest text-white/40">Infused Still Mineral • </p>
+                    </div>
+                    <span class="font-vanguard text-[10px] text-[var(--gold)]">R 45</span>
+                </div>
+                <div class="menu-item flex justify-between items-center">
+                    <div>
+                        <h3 class="text-lg font-serif italic">Ruby Mojito</h3>
+                        <p class="text-[9px] uppercase tracking-widest text-white/40">Fresh Pomegranate • Mint (Non-Alc)</p>
+                    </div>
+                    <span class="font-vanguard text-[10px] text-[var(--gold)]">R 65</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal bg-[var(--emerald)]/10 p-10 rounded-2xl border border-[var(--emerald)]/20">
+            <h2 class="font-vanguard text-[10px] tracking-[0.8em] text-[var(--gold)] uppercase text-center mb-10">04. Desserts</h2>
+            <div class="space-y-6">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="text-2xl font-serif italic">Biscoff Tiramisu</h3>
+                        <p class="text-[9px] uppercase tracking-widest text-white/50">Deconstructed • Gold Leaf Shavings • Espresso Soil</p>
+                    </div>
+                    <span class="font-vanguard text-xs text-[var(--gold)]">R 95</span>
+                </div>
+                <div class="flex justify-between items-center border-t border-white/5 pt-6">
+                    <div>
+                        <h3 class="text-2xl font-serif italic">Turkish Delight Cake</h3>
+                        <p class="text-[9px] uppercase tracking-widest text-white/50">Rose Syrup • Pistachio Crust • Honey Glaze</p>
+                    </div>
+                    <span class="font-vanguard text-xs text-[var(--gold)]">R 85</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-20 text-center border-t border-white/5">
+        <div class="font-vanguard text-xl tracking-[0.5em] text-[var(--gold)] mb-4 italic">COFFEE BEANS.</div>
+        <p class="text-[7px] tracking-[0.8em] opacity-30 uppercase">Midlands • South Africa • 2026</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('reveal-visible');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
